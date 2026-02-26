@@ -8,7 +8,6 @@ use Inspector\Configuration;
 use Inspector\Exceptions\InspectorException;
 
 use function array_key_exists;
-use function curl_close;
 use function curl_errno;
 use function curl_error;
 use function curl_exec;
@@ -87,7 +86,5 @@ class CurlTransport extends AbstractApiTransport
         if (0 !== $errorNo || (200 !== $code && 201 !== $code && 403 !== $code)) {
             error_log(date('Y-m-d H:i:s') . " - [Warning] [" . static::class . "] $error - $code $errorNo");
         }
-
-        curl_close($handle);
     }
 }
